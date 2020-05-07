@@ -6,6 +6,73 @@
 		<item name="colorPrimary">@color/colorPrimary</item>
 		<item name="colorPrimaryDark">@color/colorPrimaryDark</item>
 		<item name="colorAccent">@color/colorAccent</item>
+
+		<!-- Fonts -->
+		<style name="TextAppearance.WhiteHat.Headline1" parent="TextAppearance.MaterialComponents.Headline1">
+			<item name="fontFamily">@font/oswald_light</item>
+			<item name="android:fontFamily">@font/oswald_light</item>
+			<item name="android:textSize">88sp</item>
+		</style>
+		<style name="TextAppearance.WhiteHat.Headline2" parent="TextAppearance.MaterialComponents.Headline2">
+			<item name="fontFamily">@font/oswald_light</item>
+			<item name="android:fontFamily">@font/oswald_light</item>
+			<item name="android:textSize">55sp</item>
+		</style>
+		<style name="TextAppearance.WhiteHat.Headline3" parent="TextAppearance.MaterialComponents.Headline3">
+			<item name="fontFamily">@font/oswald</item>
+			<item name="android:fontFamily">@font/oswald</item>
+			<item name="android:textSize">44sp</item>
+		</style>
+		<style name="TextAppearance.WhiteHat.Headline4" parent="TextAppearance.MaterialComponents.Headline4">
+			<item name="fontFamily">@font/oswald</item>
+			<item name="android:fontFamily">@font/oswald</item>
+			<item name="android:textSize">31sp</item>
+		</style>
+		<style name="TextAppearance.WhiteHat.Headline5" parent="TextAppearance.MaterialComponents.Headline5">
+			<item name="fontFamily">@font/oswald</item>
+			<item name="android:fontFamily">@font/oswald</item>
+			<item name="android:textSize">22sp</item>
+		</style>
+		<style name="TextAppearance.WhiteHat.Headline6" parent="TextAppearance.MaterialComponents.Headline6">
+			<item name="fontFamily">@font/oswald_medium</item>
+			<item name="android:fontFamily">@font/oswald_medium</item>
+			<item name="android:textSize">18sp</item>
+		</style>
+		<style name="TextAppearance.WhiteHat.Subtitle1" parent="TextAppearance.MaterialComponents.Subtitle1">
+			<item name="fontFamily">@font/oswald</item>
+			<item name="android:fontFamily">@font/oswald</item>
+			<item name="android:textSize">15sp</item>
+		</style>
+		<style name="TextAppearance.WhiteHat.Subtitle2" parent="TextAppearance.MaterialComponents.Subtitle2">
+			<item name="fontFamily">@font/oswald_medium</item>
+			<item name="android:fontFamily">@font/oswald_medium</item>
+			<item name="android:textSize">13sp</item>
+		</style>
+		<style name="TextAppearance.WhiteHat.Body1" parent="TextAppearance.MaterialComponents.Body1">
+			<item name="fontFamily">@font/poppins</item>
+			<item name="android:fontFamily">@font/poppins</item>
+			<item name="android:textSize">15sp</item>
+		</style>
+		<style name="TextAppearance.WhiteHat.Body2" parent="TextAppearance.MaterialComponents.Body2">
+			<item name="fontFamily">@font/poppins</item>
+			<item name="android:fontFamily">@font/poppins</item>
+			<item name="android:textSize">13sp</item>
+		</style>
+		<style name="TextAppearance.WhiteHat.Button" parent="TextAppearance.MaterialComponents.Button">
+			<item name="fontFamily">@font/poppins_medium</item>
+			<item name="android:fontFamily">@font/poppins_medium</item>
+			<item name="android:textSize">13sp</item>
+		</style>
+		<style name="TextAppearance.WhiteHat.Caption" parent="TextAppearance.MaterialComponents.Caption">
+			<item name="fontFamily">@font/poppins</item>
+			<item name="android:fontFamily">@font/poppins</item>
+			<item name="android:textSize">12sp</item>
+		</style>
+		<style name="TextAppearance.WhiteHat.Overline" parent="TextAppearance.MaterialComponents.Overline">
+			<item name="fontFamily">@font/poppins</item>
+			<item name="android:fontFamily">@font/poppins</item>
+			<item name="android:textSize">10sp</item>
+		</style>
 	</style>
 
 	<style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">

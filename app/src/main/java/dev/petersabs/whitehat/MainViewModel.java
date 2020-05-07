@@ -1,4 +1,4 @@
-package dev.petersabs.whitehat.ui.main;
+package dev.petersabs.whitehat;
 
 import androidx.lifecycle.ViewModel;
 

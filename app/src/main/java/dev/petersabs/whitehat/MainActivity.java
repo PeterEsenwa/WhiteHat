@@ -1,12 +1,13 @@
 package dev.petersabs.whitehat;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 
-import dev.petersabs.whitehat.ui.main.MainFragment;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 public class MainActivity extends AppCompatActivity {
+
+    private MainViewModel mViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,5 +18,7 @@ public class MainActivity extends AppCompatActivity {
 //                    .replace(R.id.container, MainFragment.newInstance())
 //                    .commitNow();
 //        }
+
+        mViewModel = new ViewModelProvider(this).get(MainViewModel.class);
     }
 }

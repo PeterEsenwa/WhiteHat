@@ -5,8 +5,9 @@
 		<!-- Customize your theme here. -->
 		<item name="colorPrimary">@color/colorPrimary</item>
 		<item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-		<item name="colorAccent">@color/colorAccent</item>
-
+		<item name="colorAccent">@android:color/white</item>
+		<item name="android:editTextColor">@android:color/white</item>
+		<item name="android:textColorHint">@color/colorSecondaryTextTransparent</item>
 	</style>
 	<!-- Fonts -->
 	<style name="TextAppearance.WhiteHat.Headline1" parent="TextAppearance.MaterialComponents.Headline1">
@@ -60,7 +61,13 @@
 	<style name="TextAppearance.WhiteHat.Body1" parent="TextAppearance.MaterialComponents.Body1">
 		<item name="fontFamily">@font/poppins</item>
 		<item name="android:fontFamily">@font/poppins</item>
+		<item name="font">@font/poppins</item>
 		<item name="android:textSize">15sp</item>
+		<item name="android:textColor">@color/colorPrimaryText</item>
+	</style>
+
+	<style name="TextAppearance.WhiteHat.Body1.Secondary" parent="TextAppearance.WhiteHat.Body1">
+		<item name="android:textColor">@color/colorSecondaryText</item>
 	</style>
 
 	<style name="TextAppearance.WhiteHat.Body2" parent="TextAppearance.MaterialComponents.Body2">

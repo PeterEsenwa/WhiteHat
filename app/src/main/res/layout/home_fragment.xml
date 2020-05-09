@@ -1,20 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
 		xmlns:app="http://schemas.android.com/apk/res-auto"
-		xmlns:tools="http://schemas.android.com/tools"
-		android:id="@+id/main"
+		android:id="@+id/home_layout"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
-		tools:context=".ui.main.HomeFragment">
+		android:background="@color/primaryBackground"
+		android:fitsSystemWindows="true"
+		android:focusable="true"
+		android:focusableInTouchMode="true">
 
-	<TextView
-			android:id="@+id/message"
-			android:layout_width="wrap_content"
+	<androidx.appcompat.widget.Toolbar
+			android:id="@+id/mobile_toolbar"
+			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:text="MainFragment"
+			android:background="?attr/colorPrimary"
+			android:elevation="12dp"
+			app:contentInsetStart="0dp"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent">
+
+		<androidx.constraintlayout.widget.ConstraintLayout
+				android:id="@+id/toolbar_content"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent">
+
+			<TextView
+					android:id="@+id/toolbar_app_name"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="16dp"
+					android:text="@string/app_name"
+					android:textAppearance="@style/TextAppearance.WhiteHat.Headline3"
+					android:textColor="@color/colorSecondaryText"
+					app:layout_constraintStart_toStartOf="@+id/toolbar_guideline"
+					app:layout_constraintTop_toTopOf="parent"
+					app:lineHeight="0sp"
+					app:textAllCaps="true" />
+
+			<androidx.appcompat.widget.SearchView
+					android:id="@+id/toolbar_searchview"
+					android:layout_width="0dp"
+					android:layout_height="31dp"
+					android:layout_marginTop="8dp"
+					android:layout_marginBottom="40dp"
+					android:background="@drawable/toolbar_searchview_border"
+					android:focusedByDefault="false"
+					android:paddingStart="0sp"
+					android:paddingEnd="0sp"
+					android:textAppearance="@style/TextAppearance.WhiteHat.Body2"
+					app:iconifiedByDefault="false"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintHorizontal_bias="0.0"
+					app:layout_constraintStart_toStartOf="@+id/toolbar_app_name"
+					app:layout_constraintTop_toBottomOf="@+id/toolbar_app_name"
+					app:layout_constraintWidth_percent="0.65"
+					app:queryHint="Search for a recipe"
+					app:searchHintIcon="@null"
+					app:searchIcon="@null"
+					app:submitBackground="@android:color/transparent" />
+
+			<androidx.constraintlayout.widget.Guideline
+					android:id="@+id/toolbar_guideline"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:orientation="vertical"
+					app:layout_constraintGuide_percent="0.1" />
+		</androidx.constraintlayout.widget.ConstraintLayout>
+	</androidx.appcompat.widget.Toolbar>
+
+	<androidx.recyclerview.widget.RecyclerView
+			android:id="@+id/recipes_rv"
+			android:layout_width="0dp"
+			android:layout_height="0dp"
 			app:layout_constraintBottom_toBottomOf="parent"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toTopOf="parent" />
+			app:layout_constraintTop_toBottomOf="@+id/mobile_toolbar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

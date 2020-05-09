@@ -1,3 +1,4 @@
 <resources>
 	<string name="app_name">White Hat</string>
+	<string name="recipe_listing_url">http://go.udacity.com/android-baking-app-json</string>
 </resources>

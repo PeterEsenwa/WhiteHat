@@ -1,24 +1,25 @@
 package dev.petersabs.whitehat;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
+import java.util.ArrayList;
+
+import dev.petersabs.whitehat.models.Recipe;
+import dev.petersabs.whitehat.ui.main.HomeFragment;
+
 public class MainActivity extends AppCompatActivity {
-
-    private MainViewModel mViewModel;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
-//        if (savedInstanceState == null) {
-//            getSupportFragmentManager().beginTransaction()
-//                    .replace(R.id.container, MainFragment.newInstance())
-//                    .commitNow();
-//        }
+    }
 
-        mViewModel = new ViewModelProvider(this).get(MainViewModel.class);
+    public void loadData() {
+        ArrayList<Recipe> tempRecipes;
+
     }
 }

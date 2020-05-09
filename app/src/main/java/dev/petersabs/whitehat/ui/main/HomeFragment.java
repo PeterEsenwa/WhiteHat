@@ -57,6 +57,7 @@ public class HomeFragment extends Fragment {
         recipesViewModel = new ViewModelProvider(this).get(RecipesViewModel.class);
         recipesViewModel.getRecipes().observe(getViewLifecycleOwner(), newRecipes -> {
             recipesAdapter.setRecipes(newRecipes);
+            recipesRecyclerView.scheduleLayoutAnimation();
         });
     }
 

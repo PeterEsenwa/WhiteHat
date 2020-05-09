@@ -2,7 +2,6 @@ package dev.petersabs.whitehat;
 
 import android.app.Application;
 import android.os.AsyncTask;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -12,9 +11,11 @@ import androidx.lifecycle.MutableLiveData;
 import org.json.JSONArray;
 
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 import dev.petersabs.whitehat.models.Recipe;
 import dev.petersabs.whitehat.utils.JsonUtils;
+import okhttp3.CacheControl;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -50,7 +51,12 @@ public class RecipesViewModel extends AndroidViewModel {
         protected ArrayList<Recipe> doInBackground(Void... strings) {
             OkHttpClient client = new OkHttpClient();
 
-            Request request = new Request.Builder().url(recipeListingURL).build();
+            Request request = new Request.Builder()
+                    .cacheControl(new CacheControl.Builder()
+                            .maxAge(0, TimeUnit.SECONDS)
+                            .build())
+                    .url(recipeListingURL)
+                    .build();
             try (Response response = client.newCall(request).execute()) {
                 if (!response.isSuccessful()) {
                     return tempRecipes;

@@ -18,7 +18,17 @@ import dev.petersabs.whitehat.models.Recipe;
 public class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.RecipesViewHolder> {
     private ArrayList<Recipe> recipes = new ArrayList<>();
 
-    public void setRecipes(ArrayList<Recipe> recipes) {
+    public interface RecipeItemSelectedListener {
+        void selectedRecipeItem(Recipe recipe);
+    }
+
+    private RecipeItemSelectedListener itemSelectedListener;
+
+    void setItemSelectedListener(RecipeItemSelectedListener itemSelectedListener) {
+        this.itemSelectedListener = itemSelectedListener;
+    }
+
+    void setRecipes(ArrayList<Recipe> recipes) {
         this.recipes.clear();
         this.recipes.addAll(recipes);
         notifyDataSetChanged();
@@ -29,7 +39,7 @@ public class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.RecipesV
     public RecipesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         ConstraintLayout view = (ConstraintLayout) LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.recipe_item, parent, false);
-        return new RecipesViewHolder(view);
+        return new RecipesViewHolder(view, itemSelectedListener);
     }
 
     @Override
@@ -53,16 +63,19 @@ public class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.RecipesV
     static class RecipesViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         final ConstraintLayout constraintLayout;
         Recipe recipe;
+        private RecipeItemSelectedListener itemSelectedListener;
 
-        RecipesViewHolder(@NonNull ConstraintLayout itemView) {
+        RecipesViewHolder(@NonNull ConstraintLayout itemView, RecipeItemSelectedListener itemSelectedListener) {
             super(itemView);
+            this.itemSelectedListener = itemSelectedListener;
             itemView.setOnClickListener(this);
             constraintLayout = itemView;
         }
 
         @Override
         public void onClick(View v) {
-            Toast.makeText(constraintLayout.getContext(), recipe.getName(), Toast.LENGTH_LONG).show();
+//            Toast.makeText(constraintLayout.getContext(), recipe.getName(), Toast.LENGTH_LONG).show();
+            itemSelectedListener.selectedRecipeItem(recipe);
         }
     }
 }

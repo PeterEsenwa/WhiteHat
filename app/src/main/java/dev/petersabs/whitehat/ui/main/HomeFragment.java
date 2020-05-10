@@ -22,10 +22,11 @@ import java.util.Objects;
 
 import dev.petersabs.whitehat.R;
 import dev.petersabs.whitehat.RecipesViewModel;
+import dev.petersabs.whitehat.models.Recipe;
 import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.EasyPermissions;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements RecipesAdapter.RecipeItemSelectedListener {
 
     private static final int RC_INTERNET = 15243;
     private RecipesViewModel recipesViewModel;
@@ -51,6 +52,7 @@ public class HomeFragment extends Fragment {
         ((AppCompatActivity) requireActivity()).setSupportActionBar(toolbar);
 
         recipesAdapter = new RecipesAdapter();
+        recipesAdapter.setItemSelectedListener(this);
         LinearLayoutManager layoutManager = new LinearLayoutManager(requireContext());
 
         recipesRecyclerView = view.findViewById(R.id.recipes_rv);
@@ -91,5 +93,10 @@ public class HomeFragment extends Fragment {
             EasyPermissions.requestPermissions(this, getString(R.string.internet_perm_rationale),
                     RC_INTERNET, perms);
         }
+    }
+
+    @Override
+    public void selectedRecipeItem(Recipe recipe) {
+        recipesViewModel.setSelectedRecipe(recipe);
     }
 }

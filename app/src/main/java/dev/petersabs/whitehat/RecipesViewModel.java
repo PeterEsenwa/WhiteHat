@@ -24,6 +24,7 @@ import okhttp3.ResponseBody;
 public class RecipesViewModel extends AndroidViewModel {
 
     private static MutableLiveData<ArrayList<Recipe>> recipes;
+    private static MutableLiveData<Recipe> selectedRecipe = new MutableLiveData<>();
     private static String recipeListingURL;
 
     public RecipesViewModel(@NonNull Application application) {
@@ -37,6 +38,14 @@ public class RecipesViewModel extends AndroidViewModel {
             loadRecipes();
         }
         return recipes;
+    }
+
+    public LiveData<Recipe> getSelectedRecipe() {
+        return selectedRecipe;
+    }
+
+    public void setSelectedRecipe(Recipe recipe) {
+        selectedRecipe.setValue(recipe);
     }
 
     private void loadRecipes() {

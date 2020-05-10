@@ -1,5 +1,6 @@
 package dev.petersabs.whitehat.ui.main;
 
+import android.Manifest;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,15 +16,21 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Objects;
 
 import dev.petersabs.whitehat.R;
 import dev.petersabs.whitehat.RecipesViewModel;
+import pub.devrel.easypermissions.AfterPermissionGranted;
+import pub.devrel.easypermissions.EasyPermissions;
 
 public class HomeFragment extends Fragment {
 
+    private static final int RC_INTERNET = 15243;
     private RecipesViewModel recipesViewModel;
     private RecipesAdapter recipesAdapter;
+    private RecyclerView recipesRecyclerView;
 
     public static HomeFragment newInstance() {
         return new HomeFragment();
@@ -46,7 +53,7 @@ public class HomeFragment extends Fragment {
         recipesAdapter = new RecipesAdapter();
         LinearLayoutManager layoutManager = new LinearLayoutManager(requireContext());
 
-        RecyclerView recipesRecyclerView = view.findViewById(R.id.recipes_rv);
+        recipesRecyclerView = view.findViewById(R.id.recipes_rv);
         recipesRecyclerView.setLayoutManager(layoutManager);
         recipesRecyclerView.setAdapter(recipesAdapter);
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recipesRecyclerView.getContext(),
@@ -54,11 +61,7 @@ public class HomeFragment extends Fragment {
         dividerItemDecoration.setDrawable(Objects.requireNonNull(requireContext().getDrawable(R.drawable.recipe_items_divider)));
         recipesRecyclerView.addItemDecoration(dividerItemDecoration);
 
-        recipesViewModel = new ViewModelProvider(this).get(RecipesViewModel.class);
-        recipesViewModel.getRecipes().observe(getViewLifecycleOwner(), newRecipes -> {
-            recipesAdapter.setRecipes(newRecipes);
-            recipesRecyclerView.scheduleLayoutAnimation();
-        });
+        checkPermissions();
     }
 
     @Override
@@ -66,4 +69,27 @@ public class HomeFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
     }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NotNull String[] permissions,
+                                           @NotNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        // Forward results to EasyPermissions
+        EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this);
+    }
+
+    @AfterPermissionGranted(RC_INTERNET)
+    private void checkPermissions() {
+        String[] perms = {Manifest.permission.INTERNET};
+        if (EasyPermissions.hasPermissions(requireActivity(), perms)) {
+            recipesViewModel = new ViewModelProvider(this).get(RecipesViewModel.class);
+            recipesViewModel.getRecipes().observe(getViewLifecycleOwner(), newRecipes -> {
+                recipesAdapter.setRecipes(newRecipes);
+                recipesRecyclerView.scheduleLayoutAnimation();
+            });
+        } else {
+            EasyPermissions.requestPermissions(this, getString(R.string.internet_perm_rationale),
+                    RC_INTERNET, perms);
+        }
+    }
 }

@@ -118,7 +118,7 @@ public class RecipeDetailsFragment extends Fragment {
         public Fragment createFragment(int position) {
             return position == 0
                     ? IngredientsFragment.newInstance(selectedRecipe.getIngredients())
-                    : InstructionsFragment.newInstance();
+                    : InstructionsFragment.newInstance(selectedRecipe.getSteps(), selectedRecipe.getImage());
         }
 
         @Override

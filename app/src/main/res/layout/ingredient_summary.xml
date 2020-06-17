@@ -8,7 +8,7 @@
 		android:minHeight="36dp">
 
 	<ImageView
-			android:id="@+id/imageView"
+			android:id="@+id/ingredient_indicator"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:contentDescription="@string/list_bullet"

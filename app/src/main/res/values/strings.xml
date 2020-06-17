@@ -4,4 +4,7 @@
 	<string name="internet_perm_rationale">We need to connect to the internet to load recipes for you</string>
 	<string name="list_bullet">list bullet</string>
 	<string name="ingredient_quantity_template">%ss</string>
+	<string name="step_indicator_dedsc">step indicator image</string>
+	<string name="play_step_video_if_any">play this step\'s video, if any</string>
+	<string name="recipe_image">recipe image, if any</string>
 </resources>

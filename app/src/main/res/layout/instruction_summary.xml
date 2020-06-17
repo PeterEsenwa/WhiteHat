@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:app="http://schemas.android.com/apk/res-auto"
+		xmlns:tools="http://schemas.android.com/tools"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:background="@color/primaryBackground">
+
+	<ImageView
+			android:id="@+id/step_indicator"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="24dp"
+			android:contentDescription="@string/step_indicator_dedsc"
+			app:layout_constraintBottom_toBottomOf="@+id/step_title"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="@+id/step_title"
+			app:layout_constraintVertical_bias="0.5"
+			app:srcCompat="@drawable/ic_ingredients_list_bullet" />
+
+	<TextView
+			android:id="@+id/step_title"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="24dp"
+			android:layout_marginTop="6dp"
+			android:textAllCaps="false"
+			android:textAppearance="@style/TextAppearance.WhiteHat.Overline"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintHorizontal_bias="0.0"
+			app:layout_constraintStart_toEndOf="@+id/step_indicator"
+			app:layout_constraintTop_toTopOf="parent"
+			tools:text="Starting Prep" />
+
+	<TextView
+			android:id="@+id/step_text"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_marginEnd="20dp"
+			android:layout_marginBottom="6dp"
+			android:ellipsize="end"
+			android:maxLines="3"
+			android:scrollHorizontally="true"
+			android:textAppearance="@style/TextAppearance.WhiteHat.Body1"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toStartOf="@id/play_step_video"
+			app:layout_constraintHorizontal_chainStyle="packed"
+			app:layout_constraintStart_toStartOf="@+id/step_title"
+			app:layout_constraintTop_toBottomOf="@+id/step_title"
+			tools:text="Whisk the graham cracker crumbs, 50 grams (1/4 cup) of sugar, and 1/2 teaspoon of salt together in a medium bowl. Pour the melted butter and 1 teaspoon of vanilla into the dry ingredients and stir together until evenly mixed." />
+
+	<ImageView
+			android:id="@+id/play_step_video"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginEnd="20dp"
+			android:contentDescription="@string/play_step_video_if_any"
+			android:visibility="gone"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toEndOf="@+id/step_text"
+			app:layout_constraintTop_toTopOf="@+id/step_text"
+			app:layout_constraintVertical_bias="0.1"
+			app:srcCompat="@drawable/ic_play_step_video" />
+</androidx.constraintlayout.widget.ConstraintLayout>

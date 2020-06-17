@@ -35,9 +35,7 @@ public class IngredientsFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if (getArguments() != null) {
-            mIngredients = getArguments().getParcelableArrayList(ARG_INGREDIENTS_LIST);
-        }
+        if (getArguments() != null) mIngredients = getArguments().getParcelableArrayList(ARG_INGREDIENTS_LIST);
     }
 
     @Override

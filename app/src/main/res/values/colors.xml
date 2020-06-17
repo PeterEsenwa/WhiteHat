@@ -11,8 +11,11 @@
 	<color name="colorSecondaryTextTransparent">#80FFFFFF</color>
 
 	<color name="primary_transparent_1">#4074B4B4</color>
+	<color name="primary_transparent_2">#8074B4B4</color>
 	<color name="primary_transparent_3">#BF74B4B4</color>
 
-	<color name="secondary_transparent_3">#400A2524</color>
+	<color name="secondary_transparent_1">#400A2524</color>
+	<color name="secondary_transparent_2">#800A2524</color>
+	<color name="secondary_transparent_3">#BF0A2524</color>
 
 </resources>

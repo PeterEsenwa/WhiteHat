@@ -12,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -32,6 +34,8 @@ public class HomeFragment extends Fragment implements RecipesAdapter.RecipeItemS
     private RecipesViewModel recipesViewModel;
     private RecipesAdapter recipesAdapter;
     private RecyclerView recipesRecyclerView;
+    private View mainView;
+    private NavController navController;
 
     public static HomeFragment newInstance() {
         return new HomeFragment();
@@ -48,6 +52,8 @@ public class HomeFragment extends Fragment implements RecipesAdapter.RecipeItemS
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        mainView = view;
+        navController = Navigation.findNavController(view);
         Toolbar toolbar = view.findViewById(R.id.mobile_toolbar);
         ((AppCompatActivity) requireActivity()).setSupportActionBar(toolbar);
 
@@ -75,8 +81,6 @@ public class HomeFragment extends Fragment implements RecipesAdapter.RecipeItemS
     public void onRequestPermissionsResult(int requestCode, @NotNull String[] permissions,
                                            @NotNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-
-        // Forward results to EasyPermissions
         EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this);
     }
 
@@ -87,7 +91,7 @@ public class HomeFragment extends Fragment implements RecipesAdapter.RecipeItemS
             recipesViewModel = new ViewModelProvider(this).get(RecipesViewModel.class);
             recipesViewModel.getRecipes().observe(getViewLifecycleOwner(), newRecipes -> {
                 recipesAdapter.setRecipes(newRecipes);
-                recipesRecyclerView.scheduleLayoutAnimation();
+//                recipesRecyclerView.scheduleLayoutAnimation();
             });
         } else {
             EasyPermissions.requestPermissions(this, getString(R.string.internet_perm_rationale),
@@ -98,5 +102,8 @@ public class HomeFragment extends Fragment implements RecipesAdapter.RecipeItemS
     @Override
     public void selectedRecipeItem(Recipe recipe) {
         recipesViewModel.setSelectedRecipe(recipe);
+        if (mainView.getId() == R.id.default_home_layout) {
+            navController.navigate(R.id.action_homeFragment_to_recipeDetails);
+        }
     }
 }

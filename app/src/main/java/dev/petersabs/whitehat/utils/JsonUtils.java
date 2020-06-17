@@ -53,7 +53,7 @@ public class JsonUtils {
         try {
             ingredient.setIngredient(jsonObject.getString(INGREDIENT_TAG));
             ingredient.setMeasure(jsonObject.getString(MEASURE_TAG));
-            ingredient.setQuantity(jsonObject.getInt(QUANTITY_TAG));
+            ingredient.setQuantity(jsonObject.getDouble(QUANTITY_TAG));
         } catch (JSONException e) {
             e.printStackTrace();
         }

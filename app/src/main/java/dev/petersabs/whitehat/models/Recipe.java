@@ -1,15 +1,15 @@
 package dev.petersabs.whitehat.models;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.ArrayList;
 import java.util.Locale;
 
 public class Recipe implements Serializable {
 
     private int id;
     private String name;
-    private List<Ingredient> ingredients = null;
-    private List<Step> steps = null;
+    private ArrayList<Ingredient> ingredients = null;
+    private ArrayList<Step> steps = null;
     private int servings;
     private String image;
     private final static long serialVersionUID = -1165047972509849545L;
@@ -28,7 +28,8 @@ public class Recipe implements Serializable {
      * @param id          recipe ID
      * @param steps       steps in recipe
      */
-    public Recipe(int id, String name, List<Ingredient> ingredients, List<Step> steps, int servings, String image) {
+    public Recipe(int id, String name, ArrayList<Ingredient> ingredients, ArrayList<Step> steps, int servings,
+                  String image) {
         this.id = id;
         this.name = name;
         this.ingredients = ingredients;
@@ -53,11 +54,11 @@ public class Recipe implements Serializable {
         this.name = name;
     }
 
-    public List<Ingredient> getIngredients() {
+    public ArrayList<Ingredient> getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(List<Ingredient> ingredients) {
+    public void setIngredients(ArrayList<Ingredient> ingredients) {
         this.ingredients = ingredients;
     }
 
@@ -69,11 +70,11 @@ public class Recipe implements Serializable {
         return ingredients.size();
     }
 
-    public List<Step> getSteps() {
+    public ArrayList<Step> getSteps() {
         return steps;
     }
 
-    public void setSteps(List<Step> steps) {
+    public void setSteps(ArrayList<Step> steps) {
         this.steps = steps;
     }
 

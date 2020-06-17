@@ -1,15 +1,29 @@
 package dev.petersabs.whitehat.models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.io.Serializable;
 
-public class Step implements Serializable {
+public class Step implements Serializable, Parcelable {
 
+    public static final Creator<Step> CREATOR = new Creator<Step>() {
+        @Override
+        public Step createFromParcel(Parcel in) {
+            return new Step(in);
+        }
+
+        @Override
+        public Step[] newArray(int size) {
+            return new Step[size];
+        }
+    };
+    private final static long serialVersionUID = -8413313508538224168L;
     private int id = -1;
     private String shortDescription;
     private String description;
     private String videoURL;
     private String thumbnailURL;
-    private final static long serialVersionUID = -8413313508538224168L;
 
     /**
      * No args constructor for use in serialization
@@ -32,6 +46,29 @@ public class Step implements Serializable {
         this.description = description;
         this.videoURL = videoURL;
         this.thumbnailURL = thumbnailURL;
+    }
+
+    private Step(Parcel parcel) {
+        this.id = parcel.readInt();
+        this.shortDescription = parcel.readString();
+        this.description = parcel.readString();
+        this.videoURL = parcel.readString();
+        this.thumbnailURL = parcel.readString();
+
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(description);
+        dest.writeString(shortDescription);
+        dest.writeString(videoURL);
+        dest.writeString(thumbnailURL);
+        dest.writeInt(id);
     }
 
     public int getId() {

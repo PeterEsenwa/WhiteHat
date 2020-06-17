@@ -44,7 +44,7 @@
 			app:layout_constraintStart_toStartOf="@+id/recipe_item_left_guideline"
 			app:layout_constraintTop_toTopOf="parent"
 			app:layout_constraintVertical_bias="0.4"
-			tools:text="Nutella - Jam Sandwich Deerer Woma" />
+			tools:text="Nutella Pie" />
 
 	<TextView
 			android:id="@+id/recipe_item_instructions_tv"

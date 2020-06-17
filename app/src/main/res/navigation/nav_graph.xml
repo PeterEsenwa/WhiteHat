@@ -8,6 +8,13 @@
 	<fragment
 			android:id="@+id/homeFragment"
 			android:name="dev.petersabs.whitehat.ui.main.HomeFragment"
-			android:label="home_fragment"
-			tools:layout="@layout/home_fragment" />
+			tools:layout="@layout/home_fragment">
+		<action
+				android:id="@+id/action_homeFragment_to_recipeDetails"
+				app:destination="@id/recipeDetails" />
+	</fragment>
+	<fragment
+			android:id="@+id/recipeDetails"
+			android:name="dev.petersabs.whitehat.ui.main.RecipeDetailsFragment"
+			tools:layout="@layout/fragment_recipe_details" />
 </navigation>

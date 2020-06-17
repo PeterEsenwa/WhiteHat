@@ -2,4 +2,6 @@
 	<string name="app_name">White Hat</string>
 	<string name="recipe_listing_url">http://go.udacity.com/android-baking-app-json</string>
 	<string name="internet_perm_rationale">We need to connect to the internet to load recipes for you</string>
+	<string name="list_bullet">list bullet</string>
+	<string name="ingredient_quantity_template">%ss</string>
 </resources>

@@ -38,4 +38,16 @@
 			app:layout_behavior="@string/appbar_scrolling_view_behavior"
 			tools:context=".ui.main.ingredients.IngredientsFragment"
 			tools:listitem="@layout/instruction_summary" />
+
+	<androidx.constraintlayout.widget.ConstraintLayout
+			android:id="@+id/instructions_bottomsheet"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:background="@color/primaryBackground"
+			app:behavior_hideable="false"
+			app:behavior_peekHeight="0dp"
+			app:behavior_skipCollapsed="true"
+			app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+	</androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -7,6 +7,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Objects;
 
 import dev.petersabs.whitehat.models.Ingredient;
@@ -34,11 +35,12 @@ public class JsonUtils {
         return new JSONArray(json);
     }
 
-    public static Step parseStep(JSONObject jsonObject) {
+    private static Step parseStep(JSONObject jsonObject) {
         Step step = new Step();
         try {
             step.setId(jsonObject.getInt(ID_TAG));
-            step.setDescription(jsonObject.getString(DESCRIPTION_TAG));
+            String description = jsonObject.getString(DESCRIPTION_TAG).replaceAll("�", "°");
+            step.setDescription(description);
             step.setShortDescription(jsonObject.getString(S_DESCRIPTION_TAG));
             step.setThumbnailURL(jsonObject.getString(THUMBNAIL_URL_TAG));
             step.setVideoURL(jsonObject.getString(VIDEO_URL_TAG));
@@ -48,7 +50,7 @@ public class JsonUtils {
         return step.isValid() ? step : null;
     }
 
-    public static Ingredient parseIngredient(JSONObject jsonObject) {
+    private static Ingredient parseIngredient(JSONObject jsonObject) {
         Ingredient ingredient = new Ingredient();
         try {
             ingredient.setIngredient(jsonObject.getString(INGREDIENT_TAG));
@@ -78,6 +80,7 @@ public class JsonUtils {
                 }
             }
             recipe.setSteps(steps);
+            recipe.setStepCountText(String.format(Locale.getDefault(), "%d instructions", recipe.getStepCount()));
 
             JSONArray ingredientsJsonArray = jsonObject.getJSONArray(INGREDIENTS_TAG);
             ArrayList<Ingredient> ingredients = new ArrayList<>();
@@ -88,6 +91,8 @@ public class JsonUtils {
                 }
             }
             recipe.setIngredients(ingredients);
+            recipe.setIngredientCountText(String.format(Locale.getDefault(), "%d ingredients",
+                    recipe.getIngredientCount()));
         } catch (JSONException e) {
             Log.d(JsonUtils.class.getSimpleName(), Objects.requireNonNull(e.getMessage()));
         }

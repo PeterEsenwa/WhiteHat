@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,11 +21,12 @@ import java.util.ArrayList;
 import dev.petersabs.whitehat.R;
 import dev.petersabs.whitehat.models.Step;
 
-public class InstructionsFragment extends Fragment {
+public class InstructionsFragment extends Fragment implements InstructionsAdapter.InstructionsAdapterInterface {
     private static final String ARG_STEPS_LIST = "steps-list";
     private static final String ARG_IMAGE_URL = "image-url";
     private ArrayList<Step> mSteps;
     private String mImageUrl;
+    private ConstraintLayout instructionBottomSheet;
 
     public InstructionsFragment() {
     }
@@ -53,11 +55,14 @@ public class InstructionsFragment extends Fragment {
     public View onCreateView(@NotNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_instructions_list, container, false);
+
+        instructionBottomSheet = view.findViewById(R.id.instructions_bottomsheet);
+
         RecyclerView instructionsRV = view.findViewById(R.id.recipes_instructions_list);
         instructionsRV.setLayoutManager(new LinearLayoutManager(view.getContext()));
-        instructionsRV.setAdapter(new InstructionsAdapter(mSteps));
+        instructionsRV.setAdapter(new InstructionsAdapter(mSteps, this));
 
-        if (mImageUrl != null && !mImageUrl.trim().equals("")) {
+        if (mImageUrl != null && !mImageUrl.trim().isEmpty()) {
             View appBarLayout = view.findViewById(R.id.instructions_appbar_layout);
             appBarLayout.setVisibility(View.VISIBLE);
             Picasso.get().load(mImageUrl)
@@ -65,5 +70,10 @@ public class InstructionsFragment extends Fragment {
                     .into((ImageView) appBarLayout.findViewById(R.id.recipe_image));
         }
         return view;
+    }
+
+    @Override
+    public void instructionPicked(@NotNull Step step) {
+
     }
 }

@@ -5,6 +5,7 @@
 		android:id="@+id/recipe_item_layout"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
+		android:background="@color/primary_transparent_1"
 		android:clipChildren="true"
 		android:foreground="@drawable/recipe_item_ripple"
 		tools:layout_height="wrap_content">
@@ -30,49 +31,50 @@
 			android:orientation="horizontal"
 			app:layout_constraintGuide_percent="0.5" />
 
-	<TextView
+	<View
 			android:id="@+id/recipe_item_name"
 			android:layout_width="0dp"
-			android:layout_height="wrap_content"
-			android:layout_marginEnd="8dp"
-			android:ellipsize="end"
-			android:maxLines="2"
-			android:textAppearance="@style/TextAppearance.WhiteHat.Headline4"
+			android:layout_height="0dp"
+			android:layout_marginEnd="32dp"
+			android:background="@color/primary_transparent_3"
 			app:layout_constraintBottom_toBottomOf="parent"
 			app:layout_constraintEnd_toStartOf="@+id/meta_info_barrier"
-			app:layout_constraintHorizontal_bias="0.0"
+			app:layout_constraintHeight_default="percent"
+			app:layout_constraintHeight_percent="0.4"
 			app:layout_constraintStart_toStartOf="@+id/recipe_item_left_guideline"
-			app:layout_constraintTop_toTopOf="parent"
-			app:layout_constraintVertical_bias="0.4"
-			tools:text="Nutella Pie" />
+			app:layout_constraintTop_toTopOf="parent" />
 
-	<TextView
+	<View
 			android:id="@+id/recipe_item_instructions_tv"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
+			android:layout_width="0dp"
+			android:layout_height="0dp"
 			android:layout_marginTop="30dp"
 			android:layout_marginBottom="2dp"
-			android:textAppearance="@style/TextAppearance.WhiteHat.Body1"
-			app:layout_constrainedHeight="true"
+			android:background="@color/primary_transparent_3"
 			app:layout_constraintBottom_toTopOf="@+id/recipe_item_hor_center_guideline"
 			app:layout_constraintEnd_toStartOf="@+id/recipe_item_right_guideline"
-			app:layout_constraintHeight_min="15sp"
+			app:layout_constraintHeight_default="percent"
+			app:layout_constraintHeight_percent="0.2"
+			app:layout_constraintStart_toEndOf="@id/meta_info_barrier"
 			app:layout_constraintTop_toTopOf="parent"
-			tools:text="8 instructions" />
+			app:layout_constraintWidth_default="percent"
+			app:layout_constraintWidth_percent="0.25" />
 
-	<TextView
+	<View
 			android:id="@+id/recipe_item_ingredients_tv"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
+			android:layout_width="0dp"
+			android:layout_height="0dp"
 			android:layout_marginTop="2dp"
 			android:layout_marginBottom="30dp"
-			android:textAppearance="@style/TextAppearance.WhiteHat.Body1"
-			app:layout_constrainedHeight="true"
+			android:background="@color/primary_transparent_3"
 			app:layout_constraintBottom_toBottomOf="parent"
 			app:layout_constraintEnd_toStartOf="@+id/recipe_item_right_guideline"
-			app:layout_constraintHeight_min="15sp"
+			app:layout_constraintHeight_default="percent"
+			app:layout_constraintHeight_percent="0.2"
+			app:layout_constraintStart_toEndOf="@id/meta_info_barrier"
 			app:layout_constraintTop_toTopOf="@+id/recipe_item_hor_center_guideline"
-			tools:text="12 ingredients" />
+			app:layout_constraintWidth_default="percent"
+			app:layout_constraintWidth_percent="0.25" />
 
 	<androidx.constraintlayout.widget.Barrier
 			android:id="@+id/meta_info_barrier"

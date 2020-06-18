@@ -2,6 +2,6 @@
 <layoutAnimation xmlns:android="http://schemas.android.com/apk/res/android"
 		android:animation="@anim/recipe_list_items_anim"
 		android:animationOrder="normal"
-		android:delay="75%">
+		android:delay="0">
 
 </layoutAnimation>

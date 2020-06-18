@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -28,7 +29,8 @@ import dev.petersabs.whitehat.models.Recipe;
 import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.EasyPermissions;
 
-public class HomeFragment extends Fragment implements RecipesAdapter.RecipeItemSelectedListener {
+public class HomeFragment extends Fragment implements RecipesAdapter.RecipeItemSelectedListener,
+        EmptyRecipeSelectedListener {
 
     private static final int RC_INTERNET = 15243;
     private RecipesViewModel recipesViewModel;
@@ -59,6 +61,7 @@ public class HomeFragment extends Fragment implements RecipesAdapter.RecipeItemS
 
         recipesAdapter = new RecipesAdapter();
         recipesAdapter.setItemSelectedListener(this);
+        recipesAdapter.setEmptyRecipeSelectedListener(this);
         LinearLayoutManager layoutManager = new LinearLayoutManager(requireContext());
 
         recipesRecyclerView = view.findViewById(R.id.recipes_rv);
@@ -91,7 +94,7 @@ public class HomeFragment extends Fragment implements RecipesAdapter.RecipeItemS
             recipesViewModel = new ViewModelProvider(this).get(RecipesViewModel.class);
             recipesViewModel.getRecipes().observe(getViewLifecycleOwner(), newRecipes -> {
                 recipesAdapter.setRecipes(newRecipes);
-//                recipesRecyclerView.scheduleLayoutAnimation();
+                recipesRecyclerView.scheduleLayoutAnimation();
             });
         } else {
             EasyPermissions.requestPermissions(this, getString(R.string.internet_perm_rationale),
@@ -105,5 +108,11 @@ public class HomeFragment extends Fragment implements RecipesAdapter.RecipeItemS
         if (mainView.getId() == R.id.default_home_layout) {
             navController.navigate(R.id.action_homeFragment_to_recipeDetails);
         }
+    }
+
+    @Override
+    public void showLoadingSnackMessage() {
+        // TODO: Switch to Snackbar
+        Toast.makeText(getContext(), "Empty shit clicked", Toast.LENGTH_LONG).show();
     }
 }

@@ -2,17 +2,18 @@ package dev.petersabs.whitehat.models;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Locale;
 
 public class Recipe implements Serializable {
 
+    private final static long serialVersionUID = -1165047972509849545L;
     private int id;
     private String name;
     private ArrayList<Ingredient> ingredients = null;
     private ArrayList<Step> steps = null;
+    private String stepCountText;
+    private String ingredientCountText;
     private int servings;
     private String image;
-    private final static long serialVersionUID = -1165047972509849545L;
 
     /**
      * No args constructor for use in serialization
@@ -62,11 +63,15 @@ public class Recipe implements Serializable {
         this.ingredients = ingredients;
     }
 
-    public String getIngredientsCountText() {
-        return String.format(Locale.getDefault(), "%d ingredients", getIngredientsCount());
+    public String getIngredientCountText() {
+        return ingredientCountText;
     }
 
-    public int getIngredientsCount() {
+    public void setIngredientCountText(String ingredientCountText) {
+        this.ingredientCountText = ingredientCountText;
+    }
+
+    public int getIngredientCount() {
         return ingredients.size();
     }
 
@@ -78,12 +83,16 @@ public class Recipe implements Serializable {
         this.steps = steps;
     }
 
-    public String getStepsCountText() {
-        return String.format(Locale.getDefault(), "%d instructions", getStepsCount());
+    public int getStepCount() {
+        return steps.size();
     }
 
-    public int getStepsCount() {
-        return steps.size();
+    public String getStepCountText() {
+        return stepCountText;
+    }
+
+    public void setStepCountText(String stepCountText) {
+        this.stepCountText = stepCountText;
     }
 
     public int getServings() {
